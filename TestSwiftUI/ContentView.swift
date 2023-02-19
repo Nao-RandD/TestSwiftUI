@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var isPresentedEditView: Bool = false
+    @State var isPresentedNameTextView: Bool = false
     @State var selectInfo: Info?
     @State var nameList = [
         "ジョン",
@@ -23,7 +23,7 @@ struct ContentView: View {
                     Button(action: {
                         selectInfo = Info(name: nameList[index])
                         print("🍻：ボタンが押されてselectInfoを更新", selectInfo?.name ?? "値がないみたい")
-                        isPresentedEditView = true
+                        isPresentedNameTextView = true
                     }, label: {
                         Text(nameList[index])
                     })
@@ -31,7 +31,7 @@ struct ContentView: View {
             }
         }
         // isPresentedでsheetを管理。初回選択で"値なし"と表示される
-        .sheet(isPresented: $isPresentedEditView) {
+        .sheet(isPresented: $isPresentedNameTextView) {
             NameTextView(name: selectInfo?.name ?? "値なし")
         }
         // itemでsheetを管理。初回選択から選択した名前が表示される
