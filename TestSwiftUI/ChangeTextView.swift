@@ -11,6 +11,8 @@ struct NameTextView: View {
     @State var name: String
 
     var body: some View {
+        let message = Self._printChanges()
+        let _ = print("NameTextView \(message)")
         Text(name)
     }
 }
